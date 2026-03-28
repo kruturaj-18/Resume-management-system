@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Browse Jobs – ResumeMS</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="app-layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo"><div class="icon">📄</div><span>ResumeMS</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Menu</div>
+      <a href="dashboard.html"    class="nav-link"><span class="nav-icon">🏠</span> Dashboard</a>
+      <a href="profile.html"      class="nav-link"><span class="nav-icon">👤</span> My Profile</a>
+      <a href="jobs.html"         class="nav-link"><span class="nav-icon">💼</span> Browse Jobs</a>
+      <a href="applications.html" class="nav-link"><span class="nav-icon">📋</span> Applications</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="avatar" id="sidebar-avatar">U</div>
+        <div class="info">
+          <div class="name"  id="sidebar-user-name">Loading…</div>
+          <div class="email" id="sidebar-user-email"></div>
+        </div>
+      </div>
+      <button id="logout-btn" class="btn btn-outline btn-sm btn-block" style="margin-top:0.75rem">🚪 Logout</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="topbar">
+      <div><h2>💼 Browse Jobs</h2><p id="job-count-label">Find your next opportunity</p></div>
+      <button class="hamburger" id="hamburger">☰</button>
+    </div>
+
+    <!-- Search & Filter -->
+    <div class="card" style="margin-bottom:1.5rem;padding:1.25rem">
+      <div class="search-bar" style="margin-bottom:0">
+        <div class="search-input-wrap">
+          <span class="search-icon">🔍</span>
+          <input type="text" id="search-input" class="form-control" placeholder="Search jobs, companies…"/>
+        </div>
+        <select id="exp-filter" class="form-select" style="width:180px">
+          <option value="">All Experience</option>
+          <option value="0">Fresher (0 yrs)</option>
+          <option value="1">1+ years</option>
+          <option value="2">2+ years</option>
+          <option value="3">3+ years</option>
+          <option value="5">5+ years</option>
+        </select>
+        <button class="btn btn-primary" id="search-btn">Search</button>
+        <button class="btn btn-outline" id="clear-btn">Clear</button>
+      </div>
+    </div>
+
+    <!-- Jobs Grid -->
+    <div class="jobs-grid" id="jobs-grid">
+      <div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--text-muted)">
+        <span style="font-size:2rem">⏳</span><p>Loading jobs…</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Job Detail + Apply Modal -->
+<div class="modal-overlay" id="job-modal">
+  <div class="modal" style="max-width:640px">
+    <div class="modal-header">
+      <h3 class="modal-title" id="modal-job-title">Job Details</h3>
+      <button class="modal-close" id="job-modal-close">✕</button>
+    </div>
+
+    <div id="job-modal-body"><!-- filled by JS --></div>
+
+    <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap">
+      <button class="btn btn-primary" id="apply-btn" style="flex:1">⚡ Apply Now</button>
+      <button class="btn btn-outline"  id="job-modal-close2">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Screening Result Modal -->
+<div class="modal-overlay" id="result-modal">
+  <div class="modal" style="max-width:520px">
+    <div class="modal-header">
+      <h3 class="modal-title">🎯 Screening Result</h3>
+      <button class="modal-close" id="result-modal-close">✕</button>
+    </div>
+    <div id="result-modal-body"></div>
+    <div style="margin-top:1.25rem;display:flex;gap:0.75rem">
+      <a href="applications.html" class="btn btn-primary" style="flex:1">View All Applications →</a>
+      <button class="btn btn-outline" id="result-close2">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/jobs.js"></script>
+</body>
+</html>

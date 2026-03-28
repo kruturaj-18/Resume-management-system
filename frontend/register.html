@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register – ResumeMS</title>
+  <meta name="description" content="Create a new ResumeMS account to start managing your career."/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="auth-wrapper">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <div class="logo-icon">🚀</div>
+      <h1>Create Account</h1>
+      <p>Start your journey with ResumeMS</p>
+    </div>
+
+    <div id="alert-box"></div>
+
+    <form id="register-form" novalidate>
+      <div class="form-group">
+        <label class="form-label" for="full_name">Full Name</label>
+        <input type="text" id="full_name" class="form-control" placeholder="Kruturaj Shinde" required autocomplete="name"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="email">Email Address</label>
+        <input type="email" id="email" class="form-control" placeholder="you@example.com" required autocomplete="email"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="password">Password</label>
+        <input type="password" id="password" class="form-control" placeholder="Min 6 characters" required autocomplete="new-password"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="confirm_password">Confirm Password</label>
+        <input type="password" id="confirm_password" class="form-control" placeholder="Repeat password" required/>
+      </div>
+      <button type="submit" id="register-btn" class="btn btn-primary btn-block btn-lg" style="margin-top:0.5rem">
+        Create Account
+      </button>
+    </form>
+
+    <p style="text-align:center; margin-top:1.5rem; font-size:0.875rem; color:var(--text-secondary)">
+      Already have an account?
+      <a href="index.html" style="color:var(--accent-light);font-weight:600">Sign in →</a>
+    </p>
+  </div>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Applications – ResumeMS</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="app-layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo"><div class="icon">📄</div><span>ResumeMS</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Menu</div>
+      <a href="dashboard.html"    class="nav-link"><span class="nav-icon">🏠</span> Dashboard</a>
+      <a href="profile.html"      class="nav-link"><span class="nav-icon">👤</span> My Profile</a>
+      <a href="jobs.html"         class="nav-link"><span class="nav-icon">💼</span> Browse Jobs</a>
+      <a href="applications.html" class="nav-link"><span class="nav-icon">📋</span> Applications</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="avatar" id="sidebar-avatar">U</div>
+        <div class="info">
+          <div class="name"  id="sidebar-user-name">Loading…</div>
+          <div class="email" id="sidebar-user-email"></div>
+        </div>
+      </div>
+      <button id="logout-btn" class="btn btn-outline btn-sm btn-block" style="margin-top:0.75rem">🚪 Logout</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="topbar">
+      <div><h2>📋 My Applications</h2><p>Full application history with screening breakdown</p></div>
+      <button class="hamburger" id="hamburger">☰</button>
+    </div>
+
+    <!-- Filter bar -->
+    <div style="display:flex;gap:0.75rem;margin-bottom:1.5rem;flex-wrap:wrap">
+      <select id="status-filter" class="form-select" style="width:180px">
+        <option value="">All Status</option>
+        <option value="Selected">Selected</option>
+        <option value="Under Review">Under Review</option>
+        <option value="Rejected">Rejected</option>
+        <option value="Pending">Pending</option>
+      </select>
+    </div>
+
+    <div class="card">
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Job Title</th>
+              <th>Company</th>
+              <th>Applied On</th>
+              <th>Score</th>
+              <th>Skill Match</th>
+              <th>Edu</th>
+              <th>Exp</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="apps-tbody">
+            <tr><td colspan="9" style="text-align:center;padding:2rem;color:var(--text-muted)">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Screening Detail Modal -->
+<div class="modal-overlay" id="detail-modal">
+  <div class="modal" style="max-width:560px">
+    <div class="modal-header">
+      <h3 class="modal-title" id="detail-modal-title">Application Details</h3>
+      <button class="modal-close" id="detail-modal-close">✕</button>
+    </div>
+    <div id="detail-modal-body"></div>
+  </div>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/applications.js"></script>
+</body>
+</html>

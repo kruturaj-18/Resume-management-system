@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Profile – ResumeMS</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="app-layout">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo"><div class="icon">📄</div><span>ResumeMS</span></div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Menu</div>
+      <a href="dashboard.html"    class="nav-link"><span class="nav-icon">🏠</span> Dashboard</a>
+      <a href="profile.html"      class="nav-link"><span class="nav-icon">👤</span> My Profile</a>
+      <a href="jobs.html"         class="nav-link"><span class="nav-icon">💼</span> Browse Jobs</a>
+      <a href="applications.html" class="nav-link"><span class="nav-icon">📋</span> Applications</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="avatar" id="sidebar-avatar">U</div>
+        <div class="info">
+          <div class="name"  id="sidebar-user-name">Loading…</div>
+          <div class="email" id="sidebar-user-email"></div>
+        </div>
+      </div>
+      <button id="logout-btn" class="btn btn-outline btn-sm btn-block" style="margin-top:0.75rem">🚪 Logout</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="topbar">
+      <div><h2>👤 My Profile</h2><p>Manage your resume details</p></div>
+      <button class="hamburger" id="hamburger">☰</button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="personal">Personal Info</button>
+      <button class="tab-btn"        data-tab="education">Education</button>
+      <button class="tab-btn"        data-tab="experience">Experience</button>
+      <button class="tab-btn"        data-tab="skills">Skills</button>
+    </div>
+
+    <!-- ── Personal Info ── -->
+    <div class="tab-panel active" id="tab-personal">
+      <div class="card" style="max-width:680px">
+        <h3 class="card-title" style="margin-bottom:1.25rem">Personal Details</h3>
+        <div id="profile-alert"></div>
+        <form id="profile-form">
+          <div class="form-group">
+            <label class="form-label">Full Name *</label>
+            <input type="text" id="full_name" class="form-control" required/>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Email</label>
+              <input type="email" id="p-email" class="form-control" disabled/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone</label>
+              <input type="tel" id="phone" class="form-control" placeholder="9876543210"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Street Address</label>
+            <input type="text" id="street" class="form-control" placeholder="12 MG Road"/>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">City</label>
+              <input type="text" id="city" class="form-control"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">State</label>
+              <input type="text" id="state" class="form-control"/>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Pincode</label>
+              <input type="text" id="pincode" class="form-control" placeholder="411001"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Date of Birth</label>
+              <input type="date" id="dob" class="form-control"/>
+            </div>
+          </div>
+          <button type="submit" id="save-profile-btn" class="btn btn-primary">💾 Save Profile</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ── Education ── -->
+    <div class="tab-panel" id="tab-education">
+      <div class="section-header">
+        <h3 class="section-title">🎓 Education</h3>
+        <button class="btn btn-primary btn-sm" id="add-edu-btn">+ Add Education</button>
+      </div>
+      <div id="education-list"></div>
+    </div>
+
+    <!-- ── Experience ── -->
+    <div class="tab-panel" id="tab-experience">
+      <div class="section-header">
+        <h3 class="section-title">💼 Work Experience</h3>
+        <button class="btn btn-primary btn-sm" id="add-exp-btn">+ Add Experience</button>
+      </div>
+      <div id="experience-list"></div>
+    </div>
+
+    <!-- ── Skills ── -->
+    <div class="tab-panel" id="tab-skills">
+      <div class="card" style="max-width:680px">
+        <div class="section-header">
+          <h3 class="section-title">🛠 Skills</h3>
+        </div>
+        <div style="display:flex;gap:0.75rem;margin-bottom:1.25rem;flex-wrap:wrap">
+          <input type="text" id="new-skill" class="form-control" placeholder="e.g. JavaScript" style="flex:1;min-width:150px"/>
+          <select id="new-proficiency" class="form-select" style="width:160px">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate" selected>Intermediate</option>
+            <option value="advanced">Advanced</option>
+            <option value="expert">Expert</option>
+          </select>
+          <button class="btn btn-primary" id="add-skill-btn">+ Add</button>
+        </div>
+        <div id="skills-list" style="display:flex;flex-wrap:wrap;gap:0.5rem;min-height:40px"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Education Modal -->
+<div class="modal-overlay" id="edu-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title" id="edu-modal-title">Add Education</h3>
+      <button class="modal-close" id="edu-modal-close">✕</button>
+    </div>
+    <form id="edu-form">
+      <input type="hidden" id="edu-id"/>
+      <div class="form-group">
+        <label class="form-label">Degree / Qualification *</label>
+        <input type="text" id="edu-degree" class="form-control" placeholder="B.Tech Computer Science" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Institution *</label>
+        <input type="text" id="edu-institution" class="form-control" placeholder="IIT Bombay" required/>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Year of Passing</label>
+          <input type="number" id="edu-year" class="form-control" min="1980" max="2030" placeholder="2023"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Score</label>
+          <input type="number" id="edu-score" class="form-control" step="0.01" min="0" max="100" placeholder="8.5"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Score Type</label>
+          <select id="edu-score-type" class="form-select">
+            <option value="percentage">Percentage (%)</option>
+            <option value="cgpa">CGPA</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Education Level *</label>
+          <select id="edu-level" class="form-select" required>
+            <option value="1">1 – High School</option>
+            <option value="2">2 – Diploma</option>
+            <option value="3" selected>3 – Bachelor's</option>
+            <option value="4">4 – Master's</option>
+            <option value="5">5 – PhD</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Save Education</button>
+    </form>
+  </div>
+</div>
+
+<!-- Experience Modal -->
+<div class="modal-overlay" id="exp-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 class="modal-title" id="exp-modal-title">Add Experience</h3>
+      <button class="modal-close" id="exp-modal-close">✕</button>
+    </div>
+    <form id="exp-form">
+      <input type="hidden" id="exp-id"/>
+      <div class="form-group">
+        <label class="form-label">Job Title *</label>
+        <input type="text" id="exp-title" class="form-control" placeholder="Software Engineer" required/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Company *</label>
+        <input type="text" id="exp-company" class="form-control" placeholder="TechCorp" required/>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Start Date *</label>
+          <input type="date" id="exp-start" class="form-control" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">End Date</label>
+          <input type="date" id="exp-end" class="form-control"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label style="display:flex;align-items:center;gap:0.5rem;cursor:pointer;font-size:0.875rem;color:var(--text-secondary)">
+          <input type="checkbox" id="exp-current" style="accent-color:var(--accent)"/> Currently working here
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Responsibilities</label>
+        <textarea id="exp-resp" class="form-control" rows="3" placeholder="Describe your key responsibilities…"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Save Experience</button>
+    </form>
+  </div>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

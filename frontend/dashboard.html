@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard – ResumeMS</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="app-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="icon">📄</div>
+      <span>ResumeMS</span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Menu</div>
+      <a href="dashboard.html"    class="nav-link"><span class="nav-icon">🏠</span> Dashboard</a>
+      <a href="profile.html"      class="nav-link"><span class="nav-icon">👤</span> My Profile</a>
+      <a href="jobs.html"         class="nav-link"><span class="nav-icon">💼</span> Browse Jobs</a>
+      <a href="applications.html" class="nav-link"><span class="nav-icon">📋</span> Applications</a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="avatar" id="sidebar-avatar">U</div>
+        <div class="info">
+          <div class="name"  id="sidebar-user-name">Loading…</div>
+          <div class="email" id="sidebar-user-email"></div>
+        </div>
+      </div>
+      <button id="logout-btn" class="btn btn-outline btn-sm btn-block" style="margin-top:0.75rem">
+        🚪 Logout
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main-content">
+    <div class="topbar">
+      <div>
+        <h2 id="welcome-msg">Welcome back! 👋</h2>
+        <p>Here's your career progress at a glance.</p>
+      </div>
+      <button class="hamburger" id="hamburger">☰</button>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid" id="stats-grid">
+      <div class="stat-card"><div class="stat-icon purple">📋</div><div class="stat-info"><div class="value" id="stat-total">–</div><div class="label">Total Applications</div></div></div>
+      <div class="stat-card"><div class="stat-icon green">✅</div><div class="stat-info"><div class="value" id="stat-selected">–</div><div class="label">Selected</div></div></div>
+      <div class="stat-card"><div class="stat-icon yellow">🔍</div><div class="stat-info"><div class="value" id="stat-review">–</div><div class="label">Under Review</div></div></div>
+      <div class="stat-card"><div class="stat-icon red">❌</div><div class="stat-info"><div class="value" id="stat-rejected">–</div><div class="label">Rejected</div></div></div>
+      <div class="stat-card"><div class="stat-icon blue">⭐</div><div class="stat-info"><div class="value" id="stat-avg">–</div><div class="label">Avg. Score</div></div></div>
+    </div>
+
+    <!-- Recent Applications -->
+    <div class="card" style="margin-bottom:1.5rem">
+      <div class="card-header">
+        <h3 class="card-title">📋 Recent Applications</h3>
+        <a href="applications.html" class="btn btn-outline btn-sm">View All</a>
+      </div>
+      <div class="table-responsive">
+        <table id="recent-table">
+          <thead>
+            <tr>
+              <th>Job Title</th>
+              <th>Company</th>
+              <th>Applied</th>
+              <th>Score</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="recent-tbody">
+            <tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--text-muted)">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Profile Snapshot + Quick Actions -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem">
+
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">👤 Profile Snapshot</h3>
+          <a href="profile.html" class="btn btn-outline btn-sm">Edit</a>
+        </div>
+        <div id="profile-snapshot" style="color:var(--text-secondary);font-size:0.875rem">
+          Loading…
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title" style="margin-bottom:1rem">⚡ Quick Actions</h3>
+        <div style="display:flex;flex-direction:column;gap:0.75rem">
+          <a href="jobs.html"    class="btn btn-primary">💼 Browse & Apply for Jobs</a>
+          <a href="profile.html" class="btn btn-outline">✏️ Update Profile & Skills</a>
+          <a href="applications.html" class="btn btn-outline">📊 View Application History</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="js/common.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
